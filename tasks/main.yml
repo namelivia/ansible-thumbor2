@@ -24,7 +24,7 @@
 
 - name: Create app container
   docker_container:
-    name: "{{application_name}}"
+    name: "{{ application_name }}"
     image: "minimalcompact/thumbor:latest"
     restart_policy: "always"
     memory: "100MB"
@@ -32,9 +32,9 @@
       - name: "pomerium"
     log_driver: "awslogs"
     log_options:
-        awslogs-region: "{{cloudwatch_region}}"
-        awslogs-group: "{{cloudwatch_log_group}}"
-        awslogs-stream: "{{application_name}}"
+      awslogs-region: "{{ cloudwatch_region }}"
+      awslogs-group: "{{ cloudwatch_log_group }}"
+      awslogs-stream: "{{ application_name }}"
     exposed_ports:
       - "80"
     volumes:
@@ -45,7 +45,7 @@
       # Normally this is set in connection with the number of CPU cores
       # Note however that you can also use the docker-compose scale option to dynamically
       # scale your thumbor instances
-      #THUMBOR_NUM_PROCESSES: "4"
+      # THUMBOR_NUM_PROCESSES: "4"
       # this would allow CORS from any origin (you can restrict to specific origins if you want)
       CORS_ALLOW_ORIGIN: "*"
       # returns a webp image if browser Accept headers match
@@ -61,6 +61,7 @@
     name: namelivia.backups
     tasks_from: setup-file-backups
 
-- include_role:
+- name: Setup S3 backups
+  include_role:
     name: namelivia.backups
     tasks_from: setup-s3-backups
