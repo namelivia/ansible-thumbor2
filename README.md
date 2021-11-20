@@ -1,4 +1,4 @@
-# Thumbor Ansible role
+# Thumbor Ansible role [![Ansible Lint](https://github.com/namelivia/ansible-thumbor2/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/namelivia/ansible-thumbor2/actions/workflows/ansible-lint.yml)
 
 ## This is a WIP
 
